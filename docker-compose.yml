@@ -1,0 +1,11 @@
+version: '3'
+services:
+  postgres-dvdrental:
+    container_name: postgres-dvdrental
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: training-materialized-view
+    command: postgres -c shared_preload_libraries=pg_cron -c cron.database_name=dvdrental
+    ports:
+      - '5432:5432'
